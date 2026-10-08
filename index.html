@@ -1,0 +1,6733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MEC Student Portal</title>
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f7f7f9;
+    color: #202020;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root {
+    --blue: #6b3f24;
+    --dark-blue: #4a2a1a;
+    --light-blue: #f5eadb;
+    --purple-light: #eadbc8;
+    --danger: #b74335;
+    --green: #397a4c;
+    --orange: #c98525;
+    --border: #d9c5ad;
+    --background: #f7f7f9;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    background: var(--blue);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    color: white;
+}
+
+.header h2 {
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.login-page {
+    min-height: 100vh;
+    background: white;
+}
+
+.school-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 45px 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.school-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.school-name {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.login-wrapper {
+    max-width: 650px;
+    margin: 10px auto 50px;
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 8px 35px rgba(0,0,0,0.08);
+}
+
+.login-card h1 {
+    color: var(--dark-blue);
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.login-card p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.chrome-note {
+    color: #c04b85 !important;
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.input-group {
+    position: relative;
+    margin-top: 20px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 17px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+.input-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--dark-blue);
+}
+
+.password-eye {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.remember {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 20px;
+    background: var(--dark-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #30297a;
+}
+
+.forgot {
+    margin-top: 25px;
+    color: #d44d4d;
+    font-size: 17px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.host-link {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--dark-blue);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   STUDENT DASHBOARD
+========================================================= */
+
+.dashboard {
+    min-height: 100vh;
+    background: #f8f8fa;
+}
+
+.dashboard-header {
+    background: var(--blue);
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-btn {
+    border: none;
+    background: var(--danger);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 7px;
+}
+
+
+/* =========================================================
+   STUDENT INFORMATION
+========================================================= */
+
+.student-info {
+    background: white;
+    margin: 30px auto;
+    width: 95%;
+    max-width: 1100px;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    border: 1px solid #ddd;
+}
+
+.profile-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--dark-blue);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+}
+
+.student-info h2 {
+    color: var(--dark-blue);
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.student-info p {
+    color: #777;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   ACADEMIC YEAR
+========================================================= */
+
+.academic-year {
+    background: white;
+    width: 95%;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.academic-year h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.academic-year strong {
+    font-size: 27px;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    width: 95%;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.menu-card {
+    background: white;
+    min-height: 170px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.menu-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--purple-light);
+    color: #222;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.menu-card h3 {
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   STUDENT CONTENT
+========================================================= */
+
+.content-page {
+    width: 95%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.back-btn {
+    background: var(--dark-blue);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
+.content-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.content-box h2 {
+    color: var(--dark-blue);
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   ACCOUNT PROFILE
+========================================================= */
+
+.account-tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 25px;
+    overflow-x: auto;
+}
+
+.account-tab {
+    min-width: 170px;
+    padding: 18px 15px;
+    border: none;
+    background: white;
+    color: #777;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.account-tab.active {
+    color: var(--dark-blue);
+    border-bottom: 3px solid var(--dark-blue);
+}
+
+.profile-photo-box {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.profile-photo {
+    width: 300px;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 5px;
+    background: #eee;
+}
+
+.student-detail-card {
+    background: #f5f5f5;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.student-detail-card .label {
+    color: #a2a2a8;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.student-detail-card .value {
+    font-size: 21px;
+    font-weight: bold;
+    color: #222;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    padding: 14px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: var(--dark-blue);
+    color: white;
+}
+
+
+/* =========================================================
+   RESULT CARD
+========================================================= */
+
+.result-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.result-card h3 {
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+}
+
+.result-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.primary-btn,
+.success-btn,
+.danger-btn,
+.secondary-btn,
+.orange-btn {
+    border: none;
+    padding: 11px 17px;
+    border-radius: 7px;
+    color: white;
+    font-size: 15px;
+}
+
+.primary-btn {
+    background: var(--dark-blue);
+}
+
+.success-btn {
+    background: var(--green);
+}
+
+.danger-btn {
+    background: var(--danger);
+}
+
+.secondary-btn {
+    background: #777;
+}
+
+.orange-btn {
+    background: var(--orange);
+}
+
+
+/* =========================================================
+   HOST LOGIN
+========================================================= */
+
+.host-login {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+}
+
+.host-login h1 {
+    color: var(--dark-blue);
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+.admin-page {
+    min-height: 100vh;
+    background: #f5f6f8;
+}
+
+.admin-header {
+    background: var(--dark-blue);
+    color: white;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-container {
+    width: 95%;
+    max-width: 1250px;
+    margin: 30px auto;
+}
+
+
+/* =========================================================
+   ADMIN SIDEBAR
+========================================================= */
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100vh - 72px);
+}
+
+.admin-sidebar {
+    background: white;
+    border-right: 1px solid #ddd;
+    padding: 20px 12px;
+}
+
+.admin-sidebar button {
+    width: 100%;
+    text-align: left;
+    padding: 14px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.admin-sidebar button:hover,
+.admin-sidebar button.active {
+    background: #e9e8ff;
+    color: var(--dark-blue);
+    font-weight: bold;
+}
+
+.admin-main {
+    padding: 30px;
+}
+
+
+/* =========================================================
+   ADMIN CARDS
+========================================================= */
+
+.admin-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.admin-card h2 {
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+}
+
+.admin-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.stat-card .stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--dark-blue);
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   ADMIN STUDENT LIST
+========================================================= */
+
+.admin-student {
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-student-info h3 {
+    color: var(--dark-blue);
+    margin-bottom: 5px;
+}
+
+.admin-student-info p {
+    color: #777;
+    margin-top: 4px;
+}
+
+.admin-student-actions {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   CLASS GRID
+========================================================= */
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.class-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.class-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+}
+
+.class-card h3 {
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+}
+
+.class-card p {
+    color: #777;
+}
+
+
+/* =========================================================
+   ADMIN FORMS
+========================================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.form-field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENTS
+========================================================= */
+
+.announcement {
+    border: 1px solid #ddd;
+    border-left: 5px solid var(--blue);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.announcement h3 {
+    color: var(--dark-blue);
+    margin-bottom: 8px;
+}
+
+.announcement .date {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.announcement .target {
+    display: inline-block;
+    background: #e9f3fb;
+    color: var(--blue);
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.modal-box h2 {
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    float: right;
+    background: var(--danger);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty {
+    padding: 35px;
+    text-align: center;
+    color: #777;
+    background: #fafafa;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+.notif-banner {
+    background: var(--orange);
+    color: white;
+    width: 95%;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 18px 25px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger);
+    color: white;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+}
+
+.notif-item {
+    border: 1px solid #ddd;
+    border-left: 5px solid var(--orange);
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    background: #fafafa;
+}
+
+.notif-item h3 {
+    color: var(--dark-blue);
+    margin-bottom: 6px;
+}
+
+.notif-item p {
+    color: #777;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 900px) {
+
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
+    }
+
+    .admin-sidebar button {
+        min-width: 150px;
+        white-space: nowrap;
+    }
+
+    .admin-stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .class-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media(max-width: 700px) {
+
+    .school-header {
+        align-items: flex-start;
+        padding: 30px 20px;
+    }
+
+    .school-logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .school-name {
+        font-size: 22px;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+
+    .login-card h1 {
+        font-size: 35px;
+    }
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .student-info {
+        align-items: flex-start;
+    }
+
+    .admin-student {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .class-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .admin-main {
+        padding: 15px;
+    }
+
+    .admin-header {
+        padding: 15px;
+    }
+
+    .profile-photo {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     STUDENT LOGIN
+========================================================= -->
+
+<section id="loginPage" class="login-page">
+
+    <div class="header">
+        <h2>Student Portal</h2>
+    </div>
+
+    <div class="school-header">
+
+        <img
+            src="crest.png"
+            class="school-logo"
+            alt="MEC Crest"
+            onerror="this.style.display='none'"
+        >
+
+        <div class="school-name">
+            Mays Day Care &<br>
+            Educational Center<br>
+            (MEC)
+        </div>
+
+    </div>
+
+    <div class="login-wrapper">
+
+        <div class="login-card">
+
+            <h1>Student Portal</h1>
+
+            <p>
+                Welcome to the official student portal for
+                Mays Day Care & Educational Center (MEC).
+            </p>
+
+            <p class="chrome-note">
+                Kindly open in Chrome browser for best platform experience.
+            </p>
+
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="studentLogin"
+                    placeholder="Student ID">
+            </div>
+
+            <div class="input-group">
+
+                <input
+                    type="password"
+                    id="studentPassword"
+                    placeholder="Password">
+
+                <span
+                    class="password-eye"
+                    onclick="toggleStudentPassword()">
+                    👁
+                </span>
+
+            </div>
+
+            <div class="remember">
+
+                <input
+                    type="checkbox"
+                    id="rememberMe">
+
+                <label for="rememberMe">
+                    Remember Me
+                </label>
+
+            </div>
+
+            <button
+                class="login-btn"
+                onclick="studentLogin()">
+                Login
+            </button>
+
+            <div
+                class="forgot"
+                onclick="forgotPassword()">
+
+                Forgot your password?
+                Click here to do a password reset.
+
+            </div>
+
+            <div
+                class="host-link"
+                onclick="showHostLogin()">
+
+                Host / Administrator Login
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STUDENT DASHBOARD
+========================================================= -->
+
+<section
+    id="studentDashboard"
+    class="dashboard hidden">
+
+    <div class="dashboard-header">
+
+        <h2>MEC Student Portal</h2>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <div class="student-info">
+
+        <div class="profile-icon">
+            👤
+        </div>
+
+        <div>
+
+            <h2 id="studentName"></h2>
+
+            <p id="studentEmail"></p>
+
+            <p id="studentIndex"></p>
+
+            <p id="studentClass"></p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="notifBanner"
+        class="notif-banner hidden"
+        onclick="openStudentPage('announcements')">
+    </div>
+
+
+    <div class="academic-year">
+
+        <h3>Academic Year</h3>
+
+        <strong>
+            2026/2027, First Semester
+        </strong>
+
+    </div>
+
+
+    <div class="menu">
+
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('account')">
+
+            <div class="menu-icon">
+                👤
+            </div>
+
+            <h3>
+                My Account
+            </h3>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('statement')">
+
+            <div class="menu-icon">
+                💳
+            </div>
+
+            <h3>
+                Account Statement
+            </h3>
+
+        </div>
+
+
+<div
+            class="menu-card"
+            onclick="openStudentPage('lecture')">
+
+            <div class="menu-icon">
+                📅
+            </div>
+
+            <h3>
+                Student Timetable
+            </h3>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('exam')">
+
+            <div class="menu-icon">
+                🔖
+            </div>
+
+            <h3>
+                Examination Timetable
+            </h3>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('results')">
+
+            <div class="menu-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Results
+            </h3>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('announcements')">
+
+            <div class="menu-icon">
+                📢
+            </div>
+
+            <h3>
+                Announcements
+            </h3>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('notifications')">
+
+            <div class="menu-icon" style="position:relative;">
+                🔔
+                <span id="notifBadge" class="notif-badge hidden"></span>
+            </div>
+
+            <h3>
+                Notifications
+            </h3>
+
+        </div>
+
+        <div
+            class="menu-card"
+            onclick="openStudentPage('teacher')">
+
+            <div class="menu-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                My Teacher
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STUDENT CONTENT PAGE
+========================================================= -->
+
+<section
+    id="studentContent"
+    class="dashboard hidden">
+
+    <div class="dashboard-header">
+
+        <h2>MEC Student Portal</h2>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+    <div class="content-page">
+
+        <button
+            class="back-btn"
+            onclick="backToDashboard()">
+
+            ← Back
+
+        </button>
+
+        <div
+            class="content-box"
+            id="studentContentBox">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HOST LOGIN
+========================================================= -->
+
+<section
+    id="hostLoginPage"
+    class="hidden">
+
+    <div class="header">
+        <h2>
+            MEC Host / Administrator
+        </h2>
+    </div>
+
+    <div class="host-login">
+
+        <h1>
+            Host Login
+        </h1>
+
+        <div class="input-group">
+
+            <input
+                type="text"
+                id="hostEmail"
+                placeholder="Admin Email">
+
+        </div>
+
+        <div class="input-group">
+
+            <input
+                type="password"
+                id="hostPassword"
+                placeholder="Admin Password">
+
+        </div>
+
+        <button
+            class="login-btn"
+            style="margin-top:20px"
+            onclick="hostLogin()">
+
+            Login as Host
+
+        </button>
+
+        <button
+            class="back-btn"
+            style="margin-top:20px"
+            onclick="showStudentLogin()">
+
+            ← Student Login
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN DASHBOARD
+========================================================= -->
+
+<section
+    id="adminDashboard"
+    class="admin-page hidden">
+
+    <div class="admin-header">
+
+        <h2>
+            MEC Administration Portal
+        </h2>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <button
+                class="active"
+                onclick="adminPage('dashboard', this)">
+                🏠 Dashboard
+            </button>
+
+            <button
+                onclick="adminPage('classes', this)">
+                👨‍🎓 Classes
+            </button>
+
+            <button
+                onclick="adminPage('teachers', this)">
+                👨‍🏫 Teachers
+            </button>
+
+            <button
+                onclick="adminPage('results', this)">
+                📄 Results
+            </button>
+
+            <button
+                onclick="adminPage('timetables', this)">
+                📅 Timetables
+            </button>
+
+            <button
+                onclick="adminPage('exams', this)">
+                🔖 Exam Timetables
+            </button>
+
+            <button
+                onclick="adminPage('fees', this)">
+                💰 Fees & Payments
+            </button>
+
+            <button
+                onclick="adminPage('announcements', this)">
+                📢 Announcements
+            </button>
+
+            <button
+                onclick="adminPage('admissions', this)">
+                📝 Admissions
+            </button>
+
+            <button
+                onclick="adminPage('reports', this)">
+                📊 Reports
+            </button>
+
+            <button
+                onclick="adminPage('settings', this)">
+                ⚙️ Settings
+            </button>
+
+            <button
+                onclick="adminPage('security', this)">
+                🔐 Admin Security
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main
+            class="admin-main"
+            id="adminMain">
+
+        </main>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    id="modal"
+    class="modal hidden">
+
+    <div
+        class="modal-box"
+        id="modalBox">
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// Supabase connection (the publishable key is safe to keep in the page)
+const SUPABASE_URL = "https://qklfvjuyersvonzglitw.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_TPJdChXDftegvZJDkxRczg_8VmsuhDR";
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+<script>
+
+/* =========================================================
+   STUDENT DATABASE
+========================================================= */
+
+let students = [];
+
+
+/* =========================================================
+   CLASSES
+========================================================= */
+
+const classes = [
+
+    "KG 1",
+    "KG 2",
+   
+    "Basic 1",
+    "Basic 2",
+    "Basic 3",
+    "Basic 4",
+    "Basic 5",
+    "Basic 6",
+
+    "JHS 1",
+    "JHS 2",
+    "JHS 3",
+
+];
+
+
+/* =========================================================
+   TEACHERS
+========================================================= */
+
+let teachers = [];
+
+
+/* =========================================================
+   ANNOUNCEMENTS
+========================================================= */
+
+let announcements = [];
+
+
+/* =========================================================
+   TIMETABLES (uploaded by admin, one file per class)
+========================================================= */
+
+let timetables = {
+    lecture: {},
+    exam: {}
+};
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+
+
+
+/* =========================================================
+   CURRENT USER
+========================================================= */
+
+let currentStudent = null;
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function saveData() {
+
+    try {
+
+        localStorage.setItem(
+            "MEC_students",
+            JSON.stringify(students)
+        );
+
+        localStorage.setItem(
+            "MEC_teachers",
+            JSON.stringify(teachers)
+        );
+
+        localStorage.setItem(
+            "MEC_announcements",
+            JSON.stringify(announcements)
+        );
+
+        localStorage.setItem(
+            "MEC_timetables",
+            JSON.stringify(timetables)
+        );
+
+        return true;
+
+    } catch (error) {
+
+        alert(
+            "Could not save. The browser storage is full. " +
+            "Please use a smaller file."
+        );
+
+        return false;
+
+    }
+
+}
+
+
+function loadData() {
+
+    const savedStudents =
+        localStorage.getItem("MEC_students");
+
+    const savedTeachers =
+        localStorage.getItem("MEC_teachers");
+
+    const savedAnnouncements =
+        localStorage.getItem("MEC_announcements");
+
+    const savedTimetables =
+        localStorage.getItem("MEC_timetables");
+
+
+    if (savedStudents) {
+
+        students = JSON.parse(savedStudents);
+
+    }
+
+    if (savedTeachers) {
+
+        teachers = JSON.parse(savedTeachers);
+
+    }
+
+    if (savedAnnouncements) {
+
+        announcements =
+            JSON.parse(savedAnnouncements);
+
+    }
+
+    if (savedTimetables) {
+
+        timetables =
+            JSON.parse(savedTimetables);
+
+    }
+
+    if (!timetables.lecture) timetables.lecture = {};
+
+    if (!timetables.exam) timetables.exam = {};
+
+
+    /* Give older announcements an id */
+
+    announcements.forEach(function(a, i) {
+
+        if (!a.id) {
+
+            a.id = "A" + Date.now() + "_" + i;
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function resizeImage(file, callback) {
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const img = new Image();
+
+        img.onload = function() {
+
+            const max = 400;
+
+            let w = img.width;
+            let h = img.height;
+
+            if (w > h) {
+
+                if (w > max) {
+                    h = h * max / w;
+                    w = max;
+                }
+
+            } else {
+
+                if (h > max) {
+                    w = w * max / h;
+                    h = max;
+                }
+
+            }
+
+            const canvas =
+                document.createElement("canvas");
+
+            canvas.width = w;
+            canvas.height = h;
+
+            canvas
+                .getContext("2d")
+                .drawImage(img, 0, 0, w, h);
+
+            callback(
+                canvas.toDataURL("image/jpeg", 0.8)
+            );
+
+        };
+
+        img.onerror = function() {
+
+            alert("Could not read that image.");
+
+        };
+
+        img.src = e.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function toggleNone(inputId, checkbox) {
+
+    const input =
+        document.getElementById(inputId);
+
+    if (checkbox.checked) {
+
+        input.value = "";
+
+        input.disabled = true;
+
+    } else {
+
+        input.disabled = false;
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function studentLogin() {
+
+    const loginValue =
+        document
+        .getElementById("studentLogin")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("studentPassword")
+        .value;
+
+
+    if (!loginValue || !password) {
+
+        alert(
+            "Please enter your Student ID/Index Number/Email and Password."
+        );
+
+        return;
+
+    }
+
+
+    const student =
+        students.find(function(s) {
+
+            return (
+
+                (
+                    s.id.toLowerCase()
+                    ===
+                    loginValue.toLowerCase() ||
+
+                    s.index === loginValue ||
+
+                    s.email.toLowerCase()
+                    ===
+                    loginValue.toLowerCase()
+                )
+
+                &&
+
+                s.password === password
+
+            );
+
+        });
+
+
+    if (!student) {
+
+        alert(
+            "Incorrect Student ID/Index Number/Email or Password."
+        );
+
+        return;
+
+    }
+
+
+    currentStudent = student;
+
+
+    document
+        .getElementById("loginPage")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("studentDashboard")
+        .classList.remove("hidden");
+
+
+    updateStudentHeader();
+
+}
+
+
+function updateStudentHeader() {
+
+    if (!currentStudent) return;
+
+
+    document
+        .getElementById("studentName")
+        .textContent =
+        currentStudent.name;
+
+
+    document
+        .getElementById("studentEmail")
+        .textContent =
+        (
+            currentStudent.personalEmail &&
+            currentStudent.personalEmail !== "None"
+            ? currentStudent.personalEmail
+            : currentStudent.email
+        );
+
+
+    document
+        .getElementById("studentIndex")
+        .textContent =
+        currentStudent.index
+        ? "Index Number: " + currentStudent.index
+        : "Student ID: " + currentStudent.id;
+
+
+    document
+        .getElementById("studentClass")
+        .textContent =
+        "Class: " +
+        currentStudent.className;
+
+    updateNotificationUI();
+
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+function toggleStudentPassword() {
+
+    const password =
+        document.getElementById("studentPassword");
+
+
+    password.type =
+        password.type === "password"
+        ? "text"
+        : "password";
+
+}
+
+
+function forgotPassword() {
+
+    alert(
+        "Password Reset\n\n" +
+        "Please contact the MEC administrator to reset your password."
+    );
+
+}
+
+
+/* =========================================================
+   HOST LOGIN
+========================================================= */
+
+function showHostLogin() {
+
+    document
+        .getElementById("loginPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("hostLoginPage")
+        .classList.remove("hidden");
+
+}
+
+
+function showStudentLogin() {
+
+    document
+        .getElementById("hostLoginPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("loginPage")
+        .classList.remove("hidden");
+
+}
+
+
+async function hostLogin() {
+
+    const email =
+        document.getElementById("hostEmail").value.trim();
+
+    const password =
+        document.getElementById("hostPassword").value;
+
+
+    if (!email || !password) {
+
+        alert("Please enter your email and password.");
+
+        return;
+
+    }
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+        if (error) {
+
+            alert("Incorrect admin email or password.");
+
+            console.error("Supabase login error:", error);
+
+            return;
+
+        }
+
+
+        const { data: profile, error: profileError } =
+            await supabaseClient
+                .from("profiles")
+                .select("role")
+                .eq("id", data.user.id)
+                .single();
+
+        if (profileError) {
+
+            alert("Login worked, but the user profile could not be found.");
+
+            console.error("Profile error:", profileError);
+
+            await supabaseClient.auth.signOut();
+
+            return;
+
+        }
+
+
+        if (profile.role !== "admin") {
+
+            alert("You are not authorized to access the admin portal.");
+
+            await supabaseClient.auth.signOut();
+
+            return;
+
+        }
+
+
+        document
+            .getElementById("hostLoginPage")
+            .classList.add("hidden");
+
+        document
+            .getElementById("adminDashboard")
+            .classList.remove("hidden");
+
+        renderAdminDashboard();
+
+    } catch (err) {
+
+        console.error("Unexpected login error:", err);
+
+        alert("Something went wrong while logging in.");
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    supabaseClient.auth.signOut();
+
+    currentStudent = null;
+
+
+    document
+        .getElementById("studentDashboard")
+        .classList.add("hidden");
+
+    document
+        .getElementById("studentContent")
+        .classList.add("hidden");
+
+    document
+        .getElementById("adminDashboard")
+        .classList.add("hidden");
+
+    document
+        .getElementById("hostLoginPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("loginPage")
+        .classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   STUDENT PAGE
+========================================================= */
+
+function openStudentPage(page) {
+
+    document
+        .getElementById("studentDashboard")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("studentContent")
+        .classList.remove("hidden");
+
+
+    const box =
+        document.getElementById(
+            "studentContentBox"
+        );
+
+
+    if (page === "account") {
+
+        renderStudentAccount(box);
+
+    }
+
+    else if (page === "results") {
+
+        renderStudentResults(box);
+
+    }
+
+    else if (page === "announcements") {
+
+        renderStudentAnnouncements(box);
+
+    }
+
+    else if (page === "statement") {
+
+        renderStudentStatement(box);
+
+    }
+
+else if (page === "lecture") {
+
+        renderLectureTimetable(box);
+
+    }
+
+    else if (page === "exam") {
+
+        renderExamTimetable(box);
+
+    }
+
+    else if (page === "notifications") {
+
+        renderNotifications(box);
+
+    }
+
+    else if (page === "teacher") {
+
+        renderStudentTeacher(box);
+
+    }
+
+}
+
+
+function backToDashboard() {
+
+    updateNotificationUI();
+
+    document
+        .getElementById("studentContent")
+        .classList.add("hidden");
+
+    document
+        .getElementById("studentDashboard")
+        .classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   STUDENT ACCOUNT
+========================================================= */
+
+function renderStudentAccount(box, tab) {
+
+    tab = tab || "profile";
+
+    const s = currentStudent;
+
+
+    const tabs = `
+
+        <div class="account-tabs">
+
+            <button
+                class="account-tab ${tab === "profile" ? "active" : ""}"
+                onclick="renderStudentAccount(document.getElementById('studentContentBox'), 'profile')">
+                👤 Student Profile
+            </button>
+
+            <button
+                class="account-tab ${tab === "update" ? "active" : ""}"
+                onclick="renderStudentAccount(document.getElementById('studentContentBox'), 'update')">
+                ✏️ Update Details
+            </button>
+
+            <button class="account-tab"
+                onclick="changeStudentPassword()">
+                🔒 Change Password
+            </button>
+
+        </div>
+
+    `;
+
+
+    const photoBox = `
+
+        <div class="profile-photo-box">
+
+            ${
+                s.photo
+                ?
+                `<img src="${s.photo}" class="profile-photo">`
+                :
+                `<div class="profile-photo"
+                      style="display:inline-flex;align-items:center;justify-content:center;font-size:90px;">
+                      👤
+                 </div>`
+            }
+
+        </div>
+
+    `;
+
+
+    if (tab === "update") {
+
+        box.innerHTML = tabs + photoBox + `
+
+            <h2>
+                Update Details
+            </h2>
+
+            <p style="color:#777;margin-bottom:20px;">
+                You can update your contact details and photo.
+                Your name, ID, class, programme, date of birth and
+                gender can only be changed by the school administrator.
+            </p>
+
+            <form onsubmit="saveStudentDetails(event)">
+
+                <div class="form-grid">
+
+                    ${editField("Mobile Number (type None if you have none)", "upPhone", s.phone)}
+
+                    ${editField("Personal Email (type None if you have none)", "upPersonalEmail", s.personalEmail)}
+
+                    ${editField("Alternative Email", "upAltEmail", s.alternativeEmail)}
+
+                    ${editField("Address", "upAddress", s.address)}
+
+                    ${editField("Parent Name", "upParentName", s.parent?.name)}
+
+                    ${editField("Parent Email", "upParentEmail", s.parent?.email)}
+
+                    ${editField("Parent Number", "upParentPhone", s.parent?.phone)}
+
+                    ${editField("Parent Address", "upParentAddress", s.parent?.address)}
+
+                    <div class="form-field full-width">
+
+                        <label>
+                            Change Photo (optional)
+                        </label>
+
+                        <input
+                            type="file"
+                            id="upPhoto"
+                            accept="image/*">
+
+                    </div>
+
+                </div>
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        class="success-btn">
+
+                        Save Changes
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="renderStudentAccount(document.getElementById('studentContentBox'), 'profile')">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML = tabs + photoBox + `
+
+        <h2>
+            Student Info
+        </h2>
+
+
+        ${detailCard("Name", s.name)}
+
+        ${detailCard("Student ID", s.id)}
+
+        ${s.index ? detailCard("Index Number", s.index) : ""}
+
+        ${detailCard("Programme", s.programme)}
+
+        ${detailCard("Class", s.className)}
+
+        ${detailCard("Session", s.session)}
+
+        ${detailCard("Campus", s.campus)}
+
+        ${detailCard("Mobile Number", s.phone)}
+
+        ${detailCard(
+            "Personal Email",
+            s.personalEmail
+        )}
+
+        ${detailCard(
+            "Alternative Email",
+            s.alternativeEmail || "Not provided"
+        )}
+
+        ${detailCard(
+            "Country of Origin",
+            s.country
+        )}
+
+        ${detailCard(
+            "Gender",
+            s.gender
+        )}
+
+        ${detailCard(
+            "Date of Birth",
+            s.dob
+        )}
+
+        ${detailCard(
+            "Student Type",
+            s.studentType
+        )}
+
+        ${detailCard(
+            "Has Completed",
+            s.hasCompleted
+        )}
+
+        ${detailCard(
+            "Has Graduated",
+            s.hasGraduated
+        )}
+
+        <h2 style="margin-top:30px;">
+            Parent / Guardian
+        </h2>
+
+        ${detailCard(
+            "Parent Name",
+            s.parent?.name || "Not provided"
+        )}
+
+        ${detailCard(
+            "Parent Email",
+            s.parent?.email || "Not provided"
+        )}
+
+        ${detailCard(
+            "Parent Number",
+            s.parent?.phone || "Not provided"
+        )}
+
+        ${detailCard(
+            "Parent Address",
+            s.parent?.address || "Not provided"
+        )}
+
+    `;
+
+}
+
+
+function saveStudentDetails(event) {
+
+    event.preventDefault();
+
+    const s = currentStudent;
+
+    const box =
+        document.getElementById("studentContentBox");
+
+
+    s.phone =
+        document.getElementById("upPhone").value.trim();
+
+    s.personalEmail =
+        document.getElementById("upPersonalEmail").value.trim();
+
+    s.alternativeEmail =
+        document.getElementById("upAltEmail").value.trim();
+
+    s.address =
+        document.getElementById("upAddress").value.trim();
+
+    s.parent = {
+
+        name:
+            document.getElementById("upParentName").value.trim(),
+
+        email:
+            document.getElementById("upParentEmail").value.trim(),
+
+        phone:
+            document.getElementById("upParentPhone").value.trim(),
+
+        address:
+            document.getElementById("upParentAddress").value.trim()
+
+    };
+
+
+    const finish = function() {
+
+        if (!saveData()) return;
+
+        updateStudentHeader();
+
+        alert("Your details have been updated.");
+
+        renderStudentAccount(box, "profile");
+
+    };
+
+
+    const photoInput =
+        document.getElementById("upPhoto");
+
+    if (photoInput.files.length) {
+
+        const file = photoInput.files[0];
+
+        if (!file.type.startsWith("image/")) {
+
+            alert("Please choose an image file.");
+
+            return;
+
+        }
+
+        resizeImage(file, function(dataUrl) {
+
+            s.photo = dataUrl;
+
+            finish();
+
+        });
+
+    } else {
+
+        finish();
+
+    }
+
+}
+
+
+function detailCard(label, value) {
+
+    return `
+
+        <div class="student-detail-card">
+
+            <div class="label">
+                ${label}
+            </div>
+
+            <div class="value">
+                ${value || "Not provided"}
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CHANGE STUDENT PASSWORD
+========================================================= */
+
+function changeStudentPassword() {
+
+    const oldPassword =
+        prompt("Enter your current password:");
+
+    if (oldPassword !== currentStudent.password) {
+
+        alert("Incorrect current password.");
+
+        return;
+
+    }
+
+
+    const newPassword =
+        prompt("Enter your new password:");
+
+    if (!newPassword || newPassword.length < 6) {
+
+        alert(
+            "Password must be at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    currentStudent.password =
+        newPassword;
+
+
+    saveData();
+
+    alert("Password changed successfully.");
+
+}
+
+
+/* =========================================================
+   STUDENT RESULTS
+========================================================= */
+
+function renderStudentResults(box) {
+
+    const s = currentStudent;
+
+
+    let files = s.resultFiles || [];
+
+
+    let filesHTML = "";
+
+
+    if (files.length === 0) {
+
+        filesHTML = `
+            <div class="empty">
+                No results have been uploaded yet.
+            </div>
+        `;
+
+    } else {
+
+        filesHTML = files.map(
+            (file, index) => `
+
+            <div class="result-card">
+
+                <h3>
+                    📄 ${file.name}
+                </h3>
+
+                <p>
+                    ${file.term || "Academic Result"}
+                </p>
+
+                <div class="result-actions">
+
+                    <button
+                        class="primary-btn"
+                        onclick="viewPDF(${index})">
+                        View PDF
+                    </button>
+
+                    <a
+                        class="success-btn"
+                        style="text-decoration:none;"
+                        href="${file.data}"
+                        download="${file.name}">
+                        Download Result
+                    </a>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+    }
+
+
+    box.innerHTML = `
+
+        <h2>
+            My Results
+        </h2>
+
+        <p style="margin-bottom:25px;color:#777;">
+            Your official results uploaded by the school
+            will appear below.
+        </p>
+
+        ${filesHTML}
+
+    `;
+
+}
+
+
+function viewPDF(index) {
+
+    const file =
+        currentStudent.resultFiles[index];
+
+    const win =
+        window.open();
+
+    if (!win) {
+
+        alert(
+            "Please allow pop-ups to view the PDF."
+        );
+
+        return;
+
+    }
+
+
+    win.document.write(`
+
+        <html>
+
+        <head>
+            <title>${file.name}</title>
+        </head>
+
+        <body style="margin:0;">
+
+            <iframe
+                src="${file.data}"
+                style="width:100%;height:100vh;border:none;">
+            </iframe>
+
+        </body>
+
+        </html>
+
+    `);
+
+}
+
+
+/* =========================================================
+   STUDENT ANNOUNCEMENTS
+========================================================= */
+
+function getStudentAnnouncements(s) {
+
+    return announcements
+        .filter(a =>
+
+            a.target === "Whole School"
+            ||
+            a.target === "All Classes"
+            ||
+            a.target === s.className
+
+        )
+        .slice()
+        .reverse();
+
+}
+
+
+function getUnreadAnnouncements(s) {
+
+    const seen = s.seenAnnouncements || [];
+
+    return getStudentAnnouncements(s)
+        .filter(a => !seen.includes(a.id));
+
+}
+
+
+function renderStudentAnnouncements(box) {
+
+    const s = currentStudent;
+
+
+    const relevant =
+        getStudentAnnouncements(s);
+
+
+    box.innerHTML = `
+
+        <h2>
+            Announcements
+        </h2>
+
+        ${
+            relevant.length === 0
+
+            ?
+
+            `
+            <div class="empty">
+                No announcements for you.
+            </div>
+            `
+
+            :
+
+            relevant.map(a => `
+
+                <div class="announcement">
+
+                    <h3>
+                        ${a.title}
+                    </h3>
+
+                    <div class="date">
+                        ${a.date}
+                    </div>
+
+                    <p style="white-space:pre-wrap;">${a.message}</p>
+
+                    <span class="target">
+                        ${a.target}
+                    </span>
+
+                </div>
+
+            `).join("")
+        }
+
+    `;
+
+
+    /* Viewing the announcements marks them as read */
+
+    s.seenAnnouncements =
+        relevant.map(a => a.id);
+
+    saveData();
+
+}
+
+
+/* =========================================================
+   STUDENT FEES
+========================================================= */
+
+function renderStudentStatement(box) {
+
+    const s = currentStudent;
+
+    const total =
+        Number(s.fees?.total || 0);
+
+    const paid =
+        Number(s.fees?.paid || 0);
+
+    const balance =
+        total - paid;
+
+
+    box.innerHTML = `
+
+        <h2>
+            Account Statement
+        </h2>
+
+        <div class="student-detail-card">
+            <div class="label">
+                Total Fees
+            </div>
+
+            <div class="value">
+                GHS ${total.toFixed(2)}
+            </div>
+        </div>
+
+
+        <div class="student-detail-card">
+            <div class="label">
+                Amount Paid
+            </div>
+
+            <div class="value">
+                GHS ${paid.toFixed(2)}
+            </div>
+        </div>
+
+
+        <div class="student-detail-card">
+            <div class="label">
+                Outstanding Balance
+            </div>
+
+            <div class="value">
+                GHS ${balance.toFixed(2)}
+            </div>
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   TIMETABLES
+========================================================= */
+
+function renderStudentTimetable(box, type, title) {
+
+    const t =
+        (timetables[type] || {})[currentStudent.className];
+
+
+    let body = "";
+
+
+    if (!t) {
+
+        body = `
+            <div class="empty">
+                No ${type === "exam" ? "examination timetable" : "timetable"}
+                has been uploaded for your class yet.
+            </div>
+        `;
+
+    } else {
+
+        const isImage =
+            t.data.startsWith("data:image");
+
+        body = `
+
+            <div class="result-card">
+
+                <h3>
+                    📄 ${t.name}
+                </h3>
+
+                <p>
+                    Uploaded: ${t.date}
+                </p>
+
+                <div class="result-actions">
+
+                    <button
+                        class="primary-btn"
+                        onclick="viewTimetable('${type}')">
+                        View
+                    </button>
+
+                    <a
+                        class="success-btn"
+                        style="text-decoration:none;"
+                        href="${t.data}"
+                        download="${t.name}">
+                        Download
+                    </a>
+
+                </div>
+
+                ${
+                    isImage
+                    ?
+                    `<img src="${t.data}"
+                          style="max-width:100%;margin-top:20px;border-radius:8px;">`
+                    :
+                    ""
+                }
+
+            </div>
+
+        `;
+
+    }
+
+
+    box.innerHTML = `
+
+        <h2>
+            ${title}
+        </h2>
+
+        <p style="margin-bottom:25px;color:#777;">
+            Class: ${currentStudent.className}
+        </p>
+
+        ${body}
+
+    `;
+
+}
+
+
+function renderLectureTimetable(box) {
+
+    renderStudentTimetable(
+        box,
+        "lecture",
+        "Student Timetable"
+    );
+
+}
+
+
+function renderExamTimetable(box) {
+
+    renderStudentTimetable(
+        box,
+        "exam",
+        "Examination Timetable"
+    );
+
+}
+
+
+function viewTimetable(type) {
+
+    const t =
+        (timetables[type] || {})[currentStudent.className];
+
+    if (t) openFileTab(t);
+
+}
+
+
+function openFileTab(file) {
+
+    const win =
+        window.open();
+
+    if (!win) {
+
+        alert(
+            "Please allow pop-ups to view the file."
+        );
+
+        return;
+
+    }
+
+
+    if (file.data.startsWith("data:image")) {
+
+        win.document.write(`
+
+            <html>
+
+            <head>
+                <title>${file.name}</title>
+            </head>
+
+            <body style="margin:0;text-align:center;">
+
+                <img
+                    src="${file.data}"
+                    style="max-width:100%;">
+
+            </body>
+
+            </html>
+
+        `);
+
+    } else {
+
+        win.document.write(`
+
+            <html>
+
+            <head>
+                <title>${file.name}</title>
+            </head>
+
+            <body style="margin:0;">
+
+                <iframe
+                    src="${file.data}"
+                    style="width:100%;height:100vh;border:none;">
+                </iframe>
+
+            </body>
+
+            </html>
+
+        `);
+
+    }
+
+}
+
+
+/* =========================================================
+   STUDENT NOTIFICATIONS
+========================================================= */
+
+function updateNotificationUI() {
+
+    if (!currentStudent) return;
+
+
+    const count =
+        getUnreadAnnouncements(currentStudent).length;
+
+    const banner =
+        document.getElementById("notifBanner");
+
+    const badge =
+        document.getElementById("notifBadge");
+
+
+    if (count > 0) {
+
+        banner.textContent =
+            "🔔 You have " + count +
+            " new announcement" +
+            (count > 1 ? "s" : "") +
+            ". Tap to view.";
+
+        banner.classList.remove("hidden");
+
+        badge.textContent = count;
+
+        badge.classList.remove("hidden");
+
+    } else {
+
+        banner.classList.add("hidden");
+
+        badge.classList.add("hidden");
+
+    }
+
+}
+
+
+function renderNotifications(box) {
+
+    const unread =
+        getUnreadAnnouncements(currentStudent);
+
+
+    box.innerHTML = `
+
+        <h2>
+            Notifications
+        </h2>
+
+        ${
+            unread.length === 0
+
+            ?
+
+            `
+            <div class="empty">
+                You currently have no new notifications.
+            </div>
+            `
+
+            :
+
+            unread.map(a => `
+
+                <div
+                    class="notif-item"
+                    onclick="openStudentPage('announcements')">
+
+                    <h3>
+                        📢 New announcement: ${a.title}
+                    </h3>
+
+                    <p>
+                        ${a.target} • ${a.date}
+                    </p>
+
+                    <p style="margin-top:6px;">
+                        Tap to view in Announcements
+                    </p>
+
+                </div>
+
+            `).join("")
+        }
+
+    `;
+
+}
+
+
+/* =========================================================
+   STUDENT TEACHER
+========================================================= */
+
+function renderStudentTeacher(box) {
+
+    const list =
+        teachers.filter(
+            t => t.className === currentStudent.className
+        );
+
+
+    box.innerHTML = `
+
+        <h2>
+            My Teacher
+        </h2>
+
+        <p style="margin-bottom:25px;color:#777;">
+            Class: ${currentStudent.className}
+        </p>
+
+        ${
+            list.length === 0
+
+            ?
+
+            `
+            <div class="empty">
+                No teacher has been assigned to your class yet.
+            </div>
+            `
+
+            :
+
+            list.map(t => `
+
+                ${detailCard("Teacher Name", t.name)}
+
+                ${detailCard("Phone Number", t.phone)}
+
+                ${detailCard("Email", t.email)}
+
+            `).join("<hr style='margin:25px 0;'>")
+        }
+
+    `;
+
+}
+
+
+/* =========================================================
+   ADMIN NAVIGATION
+========================================================= */
+
+function adminPage(page, button) {
+
+    document
+        .querySelectorAll(".admin-sidebar button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    if (page === "dashboard") {
+
+        renderAdminDashboard();
+
+    }
+
+    else if (page === "classes") {
+
+        renderClasses();
+
+    }
+
+    else if (page === "teachers") {
+
+        renderTeachers();
+
+    }
+
+    else if (page === "results") {
+
+        renderAdminResults();
+
+    }
+
+    else if (page === "fees") {
+
+        renderAdminFees();
+
+    }
+
+    else if (page === "announcements") {
+
+        renderAdminAnnouncements();
+
+    }
+
+    else if (page === "admissions") {
+
+        renderAdmissions();
+
+    }
+
+    else if (page === "reports") {
+
+        renderReports();
+
+    }
+
+    else if (page === "timetables") {
+
+        renderAdminTimetables("lecture");
+
+    }
+
+    else if (page === "exams") {
+
+        renderAdminTimetables("exam");
+
+    }
+
+    else if (page === "settings") {
+
+        renderSettings();
+
+    }
+
+    else if (page === "security") {
+
+        renderSecurity();
+
+    }
+
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+function renderAdminDashboard() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    const totalFees =
+        students.reduce(
+            (sum, s) =>
+                sum + Number(s.fees?.total || 0),
+            0
+        );
+
+
+    const totalPaid =
+        students.reduce(
+            (sum, s) =>
+                sum + Number(s.fees?.paid || 0),
+            0
+        );
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Admin Dashboard
+        </h1>
+
+
+        <div class="admin-stat-grid">
+
+            <div class="stat-card">
+                <div>Total Students</div>
+                <div class="stat-number">
+                    ${students.length}
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div>Total Teachers</div>
+                <div class="stat-number">
+                    ${teachers.length}
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div>Total Fees</div>
+                <div class="stat-number">
+                    GHS ${totalFees.toFixed(0)}
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div>Fees Collected</div>
+                <div class="stat-number">
+                    GHS ${totalPaid.toFixed(0)}
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="admin-card" style="margin-top:25px;">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+            <div class="form-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="renderClasses()">
+
+                    👨‍🎓 Manage Students
+
+                </button>
+
+                <button
+                    class="success-btn"
+                    onclick="renderAdminResults()">
+
+                    📄 Upload Results
+
+                </button>
+
+                <button
+                    class="orange-btn"
+                    onclick="renderAdminAnnouncements()">
+
+                    📢 New Announcement
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Recent Students
+            </h2>
+
+            ${students.slice(-5).reverse().map(
+                s => `
+
+                <div class="admin-student">
+
+                    <div class="admin-student-info">
+
+                        <h3>
+                            ${s.name}
+                        </h3>
+
+                        <p>
+                            ${s.index || s.id}
+                        </p>
+
+                        <p>
+                            ${s.className}
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        onclick="viewStudent('${s.id}')">
+
+                        View
+
+                    </button>
+
+                </div>
+
+            `
+            ).join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CLASSES
+========================================================= */
+
+function renderClasses() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Classes
+        </h1>
+
+        <div class="form-buttons" style="margin-bottom:20px;">
+
+            <select
+                id="addStudentClassSelect"
+                style="padding:12px;border:1px solid #ccc;border-radius:8px;">
+
+                ${classes.map(c => `<option>${c}</option>`).join("")}
+
+            </select>
+
+            <button
+                class="success-btn"
+                onclick="showAddStudentForm(document.getElementById('addStudentClassSelect').value)">
+
+                + Add Student
+
+            </button>
+
+        </div>
+
+        <div class="class-grid">
+
+            ${classes.map(className => {
+
+                const count =
+                    students.filter(
+                        s => s.className === className
+                    ).length;
+
+
+                return `
+
+                    <div
+                        class="class-card"
+                        onclick="openClass('${className}')">
+
+                        <h3>
+                            ${className}
+                        </h3>
+
+                        <p>
+                            ${count} Student(s)
+                        </p>
+
+                    </div>
+
+                `;
+
+            }).join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   OPEN CLASS
+========================================================= */
+
+function openClass(className) {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    let classStudents =
+        students.filter(
+            s => s.className === className
+        );
+
+
+    main.innerHTML = `
+
+        <button
+            class="back-btn"
+            onclick="renderClasses()">
+
+            ← Classes
+
+        </button>
+
+
+        <h1 style="color:#211d59;margin-bottom:10px;">
+            ${className}
+        </h1>
+
+        <p style="color:#777;margin-bottom:25px;">
+            ${classStudents.length} student(s)
+        </p>
+
+
+        <div class="form-buttons">
+
+            <button
+                class="success-btn"
+                onclick="showAddStudentForm('${className}')">
+
+                + Add Student
+
+            </button>
+
+        </div>
+
+
+        <div class="search-box" style="margin-top:20px;">
+
+            <input
+                type="text"
+                id="classSearch"
+                placeholder="Search student..."
+                oninput="filterClassStudents('${className}')">
+
+        </div>
+
+
+        <div id="classStudentList">
+
+            ${studentListHTML(classStudents)}
+
+        </div>
+
+    `;
+
+}
+
+
+function studentListHTML(list) {
+
+    if (list.length === 0) {
+
+        return `
+
+            <div class="empty">
+                No students in this class.
+            </div>
+
+        `;
+
+    }
+
+
+    return list.map(s => `
+
+        <div
+            class="admin-student"
+            data-student-name="${s.name.toLowerCase()}">
+
+            <div class="admin-student-info">
+
+                <h3>
+                    ${s.name}
+                </h3>
+
+                <p>
+                    Student ID: ${s.id}
+                </p>
+
+                ${
+                    s.index
+                    ?
+                    `<p>Index Number: ${s.index}</p>`
+                    :
+                    ""
+                }
+
+                <p>
+                    ${s.email}
+                </p>
+
+                <p>
+                    Fees: GHS ${Number(s.fees?.paid || 0).toFixed(2)}
+                    paid of GHS ${Number(s.fees?.total || 0).toFixed(2)}
+                    (Outstanding: GHS ${(Number(s.fees?.total || 0) - Number(s.fees?.paid || 0)).toFixed(2)})
+                </p>
+
+            </div>
+
+
+            <div class="admin-student-actions">
+
+                <button
+                    class="primary-btn"
+                    onclick="viewStudent('${s.id}')">
+
+                    View
+
+                </button>
+
+                <button
+                    class="orange-btn"
+                    onclick="editStudent('${s.id}')">
+
+                    Edit
+
+                </button>
+
+                <button
+                    class="success-btn"
+                    onclick="showUploadResult('${s.id}')">
+
+                    Result
+
+                </button>
+
+                <button
+                    class="danger-btn"
+                    onclick="removeStudent('${s.id}')">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+function filterClassStudents(className) {
+
+    const search =
+        document
+        .getElementById("classSearch")
+        .value
+        .toLowerCase();
+
+
+    const list =
+        students.filter(s =>
+
+            s.className === className
+
+            &&
+
+            (
+                s.name.toLowerCase().includes(search)
+                ||
+                s.index.includes(search)
+                ||
+                s.id.toLowerCase().includes(search)
+            )
+
+        );
+
+
+    document
+        .getElementById("classStudentList")
+        .innerHTML =
+        studentListHTML(list);
+
+}
+
+
+/* =========================================================
+   ADD STUDENT
+========================================================= */
+
+function showAddStudentForm(className) {
+
+    openModal(`
+
+        <button
+            class="close-modal"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>
+            Add Student — ${className}
+        </h2>
+
+
+        <form
+            onsubmit="addStudent(event, '${className}')">
+
+            <div class="form-grid">
+
+
+                <div class="form-field">
+                    <label>Full Name</label>
+                    <input
+                        id="newName"
+                        required
+                        oninput="generateStudentCredentials()">
+                </div>
+
+
+                ${
+                    className === "JHS 3"
+                    ?
+                    `
+                <div class="form-field">
+                    <label>Index Number</label>
+                    <input
+                        id="newIndex"
+                        required>
+                </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="form-field">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        id="newEmail"
+                        required>
+                </div>
+
+
+                <div class="form-field">
+                    <label>Temporary Password</label>
+                    <input
+                        id="newPassword"
+                        readonly
+                        required>
+                </div>
+
+
+                <div class="form-field">
+                    <label>Student ID</label>
+                    <input
+                        id="newID"
+                        placeholder="Example: MECMM"
+                        readonly
+                        required>
+                </div>
+
+
+                <div class="form-field">
+                    <label>Programme</label>
+                    <input
+                        id="newProgramme">
+                </div>
+
+
+                <div class="form-field">
+                    <label>Gender</label>
+
+                    <select id="newGender">
+
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-field">
+                    <label>Date of Birth</label>
+                    <input
+                        type="date"
+                        id="newDOB"
+                        onchange="generateStudentCredentials()">
+                </div>
+
+
+                <div class="form-field">
+                    <label>Mobile Number</label>
+                    <input
+                        type="tel"
+                        id="newPhone">
+                    <label style="font-weight:normal;margin:8px 0 0;display:flex;align-items:center;gap:8px;">
+                        <input
+                            type="checkbox"
+                            id="newPhoneNone"
+                            style="width:auto;"
+                            onchange="toggleNone('newPhone', this)">
+                        None (student has no number)
+                    </label>
+                </div>
+
+
+                <div class="form-field">
+                    <label>Personal Email</label>
+                    <input
+                        type="email"
+                        id="newPersonalEmail">
+                    <label style="font-weight:normal;margin:8px 0 0;display:flex;align-items:center;gap:8px;">
+                        <input
+                            type="checkbox"
+                            id="newPersonalEmailNone"
+                            style="width:auto;"
+                            onchange="toggleNone('newPersonalEmail', this)">
+                        None (student has no personal email)
+                    </label>
+                </div>
+
+
+                <div class="form-field">
+                    <label>Address</label>
+                    <input
+                        id="newAddress">
+                </div>
+
+
+                <div class="form-field full-width">
+                    <label>Student Photo (optional)</label>
+                    <input
+                        type="file"
+                        id="newPhoto"
+                        accept="image/*">
+                </div>
+
+
+                <div class="form-field">
+                    <label>Parent Name</label>
+                    <input
+                        id="newParentName">
+                </div>
+
+
+                <div class="form-field">
+                    <label>Parent Email</label>
+                    <input
+                        type="email"
+                        id="newParentEmail">
+                </div>
+
+
+                <div class="form-field">
+                    <label>Parent Number</label>
+                    <input
+                        type="tel"
+                        id="newParentPhone">
+                </div>
+
+
+                <div class="form-field">
+                    <label>Parent Address</label>
+                    <input
+                        id="newParentAddress">
+                </div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="success-btn">
+
+                    Add Student
+
+                </button>
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeModal()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    `);
+
+}
+
+
+/* =========================================================
+   AUTOMATIC STUDENT ID + PASSWORD GENERATION
+========================================================= */
+
+function generateStudentCredentials() {
+
+    const nameInput =
+        document.getElementById("newName");
+
+    const dobInput =
+        document.getElementById("newDOB");
+
+    const idInput =
+        document.getElementById("newID");
+
+    const passwordInput =
+        document.getElementById("newPassword");
+
+
+    if (
+        !nameInput ||
+        !dobInput ||
+        !idInput ||
+        !passwordInput
+    ) {
+        return;
+    }
+
+
+    const name =
+        nameInput.value.trim();
+
+    const dob =
+        dobInput.value;
+
+
+    if (!name || !dob) {
+
+        idInput.value = "";
+
+        passwordInput.value = "";
+
+        return;
+
+    }
+
+
+    /* =========================================
+       CLEAN NAME FOR PROCESSING
+    ========================================= */
+
+    const cleanedName =
+        name
+        .replace(/[^a-zA-Z\s'-]/g, "")
+        .trim();
+
+
+    const nameParts =
+        cleanedName
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    /* =========================================
+       STUDENT INITIALS
+       Example:
+       John Kofi Mensah
+       = JKM
+    ========================================= */
+
+    const initials =
+        nameParts
+        .map(part => part.charAt(0).toUpperCase())
+        .join("");
+
+
+    /* =========================================
+       STUDENT ID
+       MEC + INITIALS
+    ========================================= */
+
+    const baseID =
+        "MEC" + initials;
+
+    let studentID = baseID;
+
+    let idCounter = 2;
+
+    while (
+        students.some(
+            s =>
+                s.id.toLowerCase()
+                ===
+                studentID.toLowerCase()
+        )
+    ) {
+
+        studentID = baseID + idCounter;
+
+        idCounter++;
+
+    }
+
+
+    /* =========================================
+       BIRTH YEAR
+    ========================================= */
+
+    const birthYear =
+        new Date(dob).getFullYear();
+
+
+    /* =========================================
+       FIRST FOUR LETTERS OF STUDENT'S NAME
+    ========================================= */
+
+    const firstFourLetters =
+        cleanedName
+        .replace(/[^a-zA-Z]/g, "")
+        .substring(0, 4);
+
+
+    /* =========================================
+       PASSWORD
+       FIRST FOUR LETTERS + BIRTH YEAR
+    ========================================= */
+
+    const generatedPassword =
+        firstFourLetters + birthYear;
+
+
+    /* =========================================
+       FILL THE FORM AUTOMATICALLY
+    ========================================= */
+
+    idInput.value =
+        studentID;
+
+    passwordInput.value =
+        generatedPassword;
+
+}
+
+
+/* =========================================================
+   SAVE NEW STUDENT
+========================================================= */
+
+function addStudent(event, className) {
+
+    event.preventDefault();
+
+    const photoInput =
+        document.getElementById("newPhoto");
+
+    if (photoInput && photoInput.files.length) {
+
+        const file = photoInput.files[0];
+
+        if (!file.type.startsWith("image/")) {
+
+            alert("Please choose an image file for the photo.");
+
+            return;
+
+        }
+
+        resizeImage(file, function(dataUrl) {
+
+            finishAddStudent(className, dataUrl);
+
+        });
+
+    } else {
+
+        finishAddStudent(className, "");
+
+    }
+
+}
+
+
+function finishAddStudent(className, photo) {
+
+
+    /* =========================================
+       REGENERATE CREDENTIALS BEFORE SAVING
+    ========================================= */
+
+    generateStudentCredentials();
+
+
+    const indexField =
+        document.getElementById("newIndex");
+
+    const phoneNone =
+        document.getElementById("newPhoneNone").checked;
+
+    const emailNone =
+        document.getElementById("newPersonalEmailNone").checked;
+
+
+    const newStudent = {
+
+        id:
+            document
+            .getElementById("newID")
+            .value
+            .trim(),
+
+        index: indexField ? indexField.value.trim() : "",
+
+        email:
+            document
+            .getElementById("newEmail")
+            .value
+            .trim(),
+
+        password:
+            document
+            .getElementById("newPassword")
+            .value,
+
+        name:
+            document
+            .getElementById("newName")
+            .value
+            .trim(),
+
+        className: className,
+
+        photo: photo || "",
+
+        programme:
+            document
+            .getElementById("newProgramme")
+            .value,
+
+        level: className,
+
+        gender:
+            document
+            .getElementById("newGender")
+            .value,
+
+        dob:
+            document
+            .getElementById("newDOB")
+            .value,
+
+        phone:
+            phoneNone
+            ? "None"
+            : document.getElementById("newPhone").value,
+
+        personalEmail:
+            emailNone
+            ? "None"
+            : document.getElementById("newPersonalEmail").value,
+
+        alternativeEmail: "",
+
+        country: "Ghana",
+
+        campus: "Accra",
+
+        session: "Morning",
+
+        studentType: "Regular",
+
+        hasCompleted: "No",
+
+        hasGraduated: "No",
+
+        admissionDate:
+            new Date()
+            .toISOString()
+            .split("T")[0],
+
+        address:
+            document
+            .getElementById("newAddress")
+            .value,
+
+        parent: {
+
+            name:
+                document
+                .getElementById("newParentName")
+                .value,
+
+            email:
+                document
+                .getElementById("newParentEmail")
+                .value,
+
+            phone:
+                document
+                .getElementById("newParentPhone")
+                .value,
+
+            address:
+                document
+                .getElementById("newParentAddress")
+                .value
+
+        },
+
+        fees: {
+            total: 0,
+            paid: 0
+        },
+
+        courses: [],
+
+        results: [],
+
+        resultFiles: []
+
+    };
+
+
+    /* =========================================
+       CHECK DUPLICATES
+    ========================================= */
+
+    if (
+        students.some(
+            s =>
+                s.id === newStudent.id
+                ||
+                (
+                    newStudent.index
+                    &&
+                    s.index === newStudent.index
+                )
+        )
+    ) {
+
+        alert(
+            "Student ID or Index Number already exists."
+        );
+
+        return;
+
+    }
+
+
+    students.push(newStudent);
+
+    saveData();
+
+    closeModal();
+
+    openClass(className);
+
+
+    alert(
+        "Student added successfully.\n\n" +
+        "Student ID: " +
+        newStudent.id +
+        "\nPassword: " +
+        newStudent.password
+    );
+
+}
+
+
+/* =========================================================
+   VIEW STUDENT
+========================================================= */
+
+function viewStudent(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!s) return;
+
+
+    openModal(`
+
+        <button
+            class="close-modal"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>
+            Student Profile
+        </h2>
+
+
+        ${detailCard("Name", s.name)}
+
+        ${s.photo ? `<div class="profile-photo-box"><img src="${s.photo}" class="profile-photo"></div>` : ""}
+
+        ${detailCard("Student ID", s.id)}
+
+        ${s.index ? detailCard("Index Number", s.index) : ""}
+
+        ${detailCard("Password", s.password)}
+
+        ${detailCard("Class", s.className)}
+
+        ${detailCard("Programme", s.programme)}
+
+        ${detailCard("Level", s.level)}
+
+        ${detailCard("Gender", s.gender)}
+
+        ${detailCard("Date of Birth", s.dob)}
+
+        ${detailCard("Phone", s.phone)}
+
+        ${detailCard("Email", s.personalEmail || s.email)}
+
+        ${detailCard("Address", s.address)}
+
+        <h2 style="margin-top:25px;">
+            Parent / Guardian
+        </h2>
+
+        ${detailCard(
+            "Parent Name",
+            s.parent?.name
+        )}
+
+        ${detailCard(
+            "Parent Email",
+            s.parent?.email
+        )}
+
+        ${detailCard(
+            "Parent Number",
+            s.parent?.phone
+        )}
+
+        ${detailCard(
+            "Parent Address",
+            s.parent?.address
+        )}
+
+
+        <div class="form-buttons">
+
+            <button
+                class="orange-btn"
+                onclick="editStudent('${s.id}')">
+
+                Edit Student
+
+            </button>
+
+            <button
+                class="success-btn"
+                onclick="showUploadResult('${s.id}')">
+
+                Upload Result
+
+            </button>
+
+            <button
+                class="primary-btn"
+                onclick="resetStudentPassword('${s.id}')">
+
+                Reset Password
+
+            </button>
+
+        </div>
+
+    `);
+
+}
+
+
+/* =========================================================
+   EDIT STUDENT
+========================================================= */
+
+function editStudent(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!s) return;
+
+
+    openModal(`
+
+        <button
+            class="close-modal"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>
+            Edit Student
+        </h2>
+
+
+        <form
+            onsubmit="saveEditedStudent(event, '${s.id}')">
+
+            <div class="form-grid">
+
+
+                ${editField("Full Name", "editName", s.name)}
+
+                ${editField("Index Number", "editIndex", s.index)}
+
+                ${editField("Email", "editEmail", s.email)}
+
+                ${editField("Student ID", "editID", s.id)}
+
+                ${editField("Programme", "editProgramme", s.programme)}
+
+                ${editField("Level", "editLevel", s.level)}
+
+                ${editField("Gender", "editGender", s.gender)}
+
+                ${editField("Date of Birth", "editDOB", s.dob, "date")}
+
+                ${editField("Mobile Number", "editPhone", s.phone)}
+
+                ${editField(
+                    "Personal Email",
+                    "editPersonalEmail",
+                    s.personalEmail
+                )}
+
+                ${editField(
+                    "Alternative Email",
+                    "editAlternativeEmail",
+                    s.alternativeEmail,
+                    "email"
+                )}
+
+                ${editField(
+                    "Address",
+                    "editAddress",
+                    s.address
+                )}
+
+                <div class="form-field full-width">
+
+                    <label>
+                        Student Photo (optional — choose to replace)
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editPhoto"
+                        accept="image/*">
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Class
+                    </label>
+
+                    <select id="editClass">
+
+                        ${
+                            classes.map(c => `
+
+                                <option
+                                    ${c === s.className ? "selected" : ""}>
+                                    ${c}
+                                </option>
+
+                            `).join("")
+                        }
+
+                    </select>
+
+                </div>
+
+
+                ${editField(
+                    "Parent Name",
+                    "editParentName",
+                    s.parent?.name
+                )}
+
+                ${editField(
+                    "Parent Email",
+                    "editParentEmail",
+                    s.parent?.email,
+                    "email"
+                )}
+
+                ${editField(
+                    "Parent Number",
+                    "editParentPhone",
+                    s.parent?.phone
+                )}
+
+                ${editField(
+                    "Parent Address",
+                    "editParentAddress",
+                    s.parent?.address
+                )}
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="success-btn">
+
+                    Save Changes
+
+                </button>
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeModal()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    `);
+
+}
+
+
+function editField(
+    label,
+    id,
+    value,
+    type = "text"
+) {
+
+    return `
+
+        <div class="form-field">
+
+            <label>
+                ${label}
+            </label>
+
+            <input
+                type="${type}"
+                id="${id}"
+                value="${escapeHTML(value || "")}">
+
+        </div>
+
+    `;
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+}
+
+
+function saveEditedStudent(event, id) {
+
+    event.preventDefault();
+
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!s) return;
+
+
+    s.id =
+        document.getElementById("editID").value;
+
+    s.index =
+        document.getElementById("editIndex").value;
+
+    s.email =
+        document.getElementById("editEmail").value;
+
+    s.name =
+        document.getElementById("editName").value;
+
+    s.className =
+        document.getElementById("editClass").value;
+
+    s.programme =
+        document.getElementById("editProgramme").value;
+
+    s.level =
+        document.getElementById("editLevel").value;
+
+    s.gender =
+        document.getElementById("editGender").value;
+
+    s.dob =
+        document.getElementById("editDOB").value;
+
+    s.phone =
+        document.getElementById("editPhone").value;
+
+    s.personalEmail =
+        document.getElementById("editPersonalEmail").value;
+
+    s.alternativeEmail =
+        document.getElementById("editAlternativeEmail").value;
+
+    s.address =
+        document.getElementById("editAddress").value;
+
+
+    s.parent = {
+
+        name:
+            document.getElementById("editParentName").value,
+
+        email:
+            document.getElementById("editParentEmail").value,
+
+        phone:
+            document.getElementById("editParentPhone").value,
+
+        address:
+            document.getElementById("editParentAddress").value
+
+    };
+
+
+    const finish = function() {
+
+        if (!saveData()) return;
+
+        closeModal();
+
+        alert("Student information updated.");
+
+        renderClasses();
+
+    };
+
+
+    const photoInput =
+        document.getElementById("editPhoto");
+
+    if (photoInput && photoInput.files.length) {
+
+        const file = photoInput.files[0];
+
+        if (!file.type.startsWith("image/")) {
+
+            alert("Please choose an image file for the photo.");
+
+            return;
+
+        }
+
+        resizeImage(file, function(dataUrl) {
+
+            s.photo = dataUrl;
+
+            finish();
+
+        });
+
+    } else {
+
+        finish();
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE STUDENT
+========================================================= */
+
+function removeStudent(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!s) return;
+
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to remove " +
+            s.name +
+            "?"
+        );
+
+
+    if (!confirmDelete) return;
+
+
+    students =
+        students.filter(
+            student => student.id !== id
+        );
+
+
+    saveData();
+
+    alert("Student removed.");
+
+    openClass(s.className);
+
+}
+
+
+/* =========================================================
+   UPLOAD RESULT
+========================================================= */
+
+function showUploadResult(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!s) return;
+
+
+    openModal(`
+
+        <button
+            class="close-modal"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>
+            Upload Result
+        </h2>
+
+        <p style="margin-bottom:20px;">
+            Student:
+            <strong>${s.name}</strong>
+        </p>
+
+
+        <div class="form-field">
+
+            <label>
+                Academic Year
+            </label>
+
+            <select id="resultYear">
+
+                <option value="2026/2027">2026/2027 Academic Year</option>
+                <option value="2027/2028">2027/2028 Academic Year</option>
+                <option value="2028/2029">2028/2029 Academic Year</option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            class="form-field"
+            style="margin-top:18px;">
+
+            <label>
+                Semester
+            </label>
+
+            <select id="resultSemester">
+
+                <option>First Semester</option>
+                <option>Second Semester</option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            class="form-field"
+            style="margin-top:18px;">
+
+            <label>
+                Select Result PDF
+            </label>
+
+            <input
+                type="file"
+                id="resultPDF"
+                accept="application/pdf">
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                class="success-btn"
+                onclick="uploadResult('${s.id}')">
+
+                Upload PDF
+
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="closeModal()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+
+        <hr style="margin:25px 0;">
+
+
+        <h3>
+            Existing Results
+        </h3>
+
+        ${
+            (s.resultFiles || []).length === 0
+
+            ?
+
+            `
+                <p style="margin-top:15px;color:#777;">
+                    No uploaded results.
+                </p>
+            `
+
+            :
+
+            s.resultFiles.map(
+                (file, i) => `
+
+                <div
+                    class="result-card"
+                    style="margin-top:15px;">
+
+                    <strong>
+                        ${file.name}
+                    </strong>
+
+                    <div class="result-actions">
+
+                        <button
+                            class="primary-btn"
+                            onclick="adminViewPDF('${s.id}', ${i})">
+
+                            View
+
+                        </button>
+
+                        <button
+                            class="danger-btn"
+                            onclick="deleteResult('${s.id}', ${i})">
+
+                            Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `
+            ).join("")
+
+        }
+
+    `);
+
+}
+
+
+function uploadResult(id) {
+
+    const input =
+        document.getElementById("resultPDF");
+
+    const term =
+        document.getElementById("resultYear").value +
+        ", " +
+        document.getElementById("resultSemester").value;
+
+
+    if (!input.files.length) {
+
+        alert("Please select a PDF.");
+
+        return;
+
+    }
+
+
+    const file =
+        input.files[0];
+
+
+    if (file.type !== "application/pdf") {
+
+        alert(
+            "Only PDF files are allowed."
+        );
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function(event) {
+
+        const s =
+            students.find(
+                student => student.id === id
+            );
+
+
+        if (!s.resultFiles) {
+
+            s.resultFiles = [];
+
+        }
+
+
+        s.resultFiles.push({
+
+            name: file.name,
+
+            term:
+                term || "Academic Result",
+
+            data:
+                event.target.result,
+
+            date:
+                new Date().toLocaleString()
+
+        });
+
+
+        if (!saveData()) {
+
+            s.resultFiles.pop();
+
+            return;
+
+        }
+
+        closeModal();
+
+        alert(
+            "Result uploaded successfully."
+        );
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function adminViewPDF(id, index) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    const file =
+        s.resultFiles[index];
+
+
+    const win =
+        window.open();
+
+
+    win.document.write(`
+
+        <iframe
+            src="${file.data}"
+            style="width:100%;height:100vh;border:none;">
+        </iframe>
+
+    `);
+
+}
+
+
+function deleteResult(id, index) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!confirm("Delete this result?")) {
+
+        return;
+
+    }
+
+
+    s.resultFiles.splice(index, 1);
+
+    saveData();
+
+    showUploadResult(id);
+
+}
+
+
+/* =========================================================
+   ADMIN RESULTS
+========================================================= */
+
+function renderAdminResults() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Results
+        </h1>
+
+        <div class="search-box">
+
+            <input
+                id="resultSearch"
+                placeholder="Search student by name, ID or index..."
+                oninput="filterAdminResults()">
+
+        </div>
+
+        <div id="adminResultsList">
+
+            ${adminResultsHTML(students)}
+
+        </div>
+
+    `;
+
+}
+
+
+function adminResultsHTML(list) {
+
+    return list.map(s => `
+
+        <div class="admin-student">
+
+            <div class="admin-student-info">
+
+                <h3>
+                    ${s.name}
+                </h3>
+
+                <p>
+                    ${s.className}
+                </p>
+
+                <p>
+                    ${
+                        (s.resultFiles || []).length
+                    }
+                    PDF Result(s)
+                </p>
+
+            </div>
+
+            <button
+                class="success-btn"
+                onclick="showUploadResult('${s.id}')">
+
+                Upload / Manage Results
+
+            </button>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+function filterAdminResults() {
+
+    const search =
+        document
+        .getElementById("resultSearch")
+        .value
+        .toLowerCase();
+
+
+    const filtered =
+        students.filter(s =>
+
+            s.name.toLowerCase().includes(search)
+
+            ||
+
+            s.id.toLowerCase().includes(search)
+
+            ||
+
+            s.index.includes(search)
+
+        );
+
+
+    document
+        .getElementById("adminResultsList")
+        .innerHTML =
+        adminResultsHTML(filtered);
+
+}
+
+
+/* =========================================================
+   FEES
+========================================================= */
+
+function renderAdminFees() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:10px;">
+            Fees & Payments
+        </h1>
+
+        <p style="color:#777;margin-bottom:25px;">
+            Tap a class to see each student and their fees.
+        </p>
+
+        <div class="class-grid">
+
+            ${classes.map(c => {
+
+                const list =
+                    students.filter(
+                        s => s.className === c
+                    );
+
+                const outstanding =
+                    list.reduce(
+                        (sum, s) =>
+                            sum
+                            + Number(s.fees?.total || 0)
+                            - Number(s.fees?.paid || 0),
+                        0
+                    );
+
+                return `
+
+                    <div
+                        class="class-card"
+                        onclick="openFeesClass('${c}')">
+
+                        <h3>
+                            ${c}
+                        </h3>
+
+                        <p>
+                            ${list.length} Student(s)
+                        </p>
+
+                        <p>
+                            Outstanding: GHS ${outstanding.toFixed(2)}
+                        </p>
+
+                    </div>
+
+                `;
+
+            }).join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+function openFeesClass(className) {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    const list =
+        students.filter(
+            s => s.className === className
+        );
+
+
+    main.innerHTML = `
+
+        <button
+            class="back-btn"
+            onclick="renderAdminFees()">
+
+            ← Classes
+
+        </button>
+
+
+        <h1 style="color:#211d59;margin-bottom:10px;">
+            ${className}
+        </h1>
+
+        <p style="color:#777;margin-bottom:25px;">
+            ${list.length} student(s)
+        </p>
+
+
+        <div class="search-box">
+
+            <input
+                id="feesSearch"
+                placeholder="Search student..."
+                oninput="filterFees('${className}')">
+
+        </div>
+
+
+        <div id="feesList">
+
+            ${feesHTML(list)}
+
+        </div>
+
+    `;
+
+}
+
+
+function feesHTML(list) {
+
+    if (list.length === 0) {
+
+        return `
+            <div class="empty">
+                No students in this class.
+            </div>
+        `;
+
+    }
+
+    return list.map(s => {
+
+        const total =
+            Number(s.fees?.total || 0);
+
+        const paid =
+            Number(s.fees?.paid || 0);
+
+        const balance =
+            total - paid;
+
+
+        return `
+
+            <div class="admin-student">
+
+                <div class="admin-student-info">
+
+                    <h3>
+                        ${s.name}
+                    </h3>
+
+                    <p>
+                        ${s.className}
+                    </p>
+
+                    <p>
+                        Total:
+                        GHS ${total.toFixed(2)}
+                    </p>
+
+                    <p>
+                        Paid:
+                        GHS ${paid.toFixed(2)}
+                    </p>
+
+                    <p>
+                        Outstanding:
+                        GHS ${balance.toFixed(2)}
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="orange-btn"
+                    onclick="editFees('${s.id}')">
+
+                    Edit Fees
+
+                </button>
+
+            </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+function filterFees(className) {
+
+    const search =
+        document
+        .getElementById("feesSearch")
+        .value
+        .toLowerCase();
+
+
+    const filtered =
+        students.filter(
+            s =>
+                s.className === className
+                &&
+                (
+                    s.name.toLowerCase().includes(search)
+                    ||
+                    s.index.includes(search)
+                    ||
+                    s.id.toLowerCase().includes(search)
+                )
+        );
+
+
+    document
+        .getElementById("feesList")
+        .innerHTML =
+        feesHTML(filtered);
+
+}
+
+
+function editFees(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    openModal(`
+
+        <button
+            class="close-modal"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>
+            Fees — ${s.name}
+        </h2>
+
+
+        <div class="form-field">
+
+            <label>
+                Total Fees
+            </label>
+
+            <input
+                type="number"
+                id="feeTotal"
+                value="${s.fees?.total || 0}">
+
+        </div>
+
+
+        <div
+            class="form-field"
+            style="margin-top:15px;">
+
+            <label>
+                Amount Paid
+            </label>
+
+            <input
+                type="number"
+                id="feePaid"
+                value="${s.fees?.paid || 0}">
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                class="success-btn"
+                onclick="saveFees('${s.id}')">
+
+                Save
+
+            </button>
+
+        </div>
+
+    `);
+
+}
+
+
+function saveFees(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    s.fees = {
+
+        total:
+            Number(
+                document.getElementById("feeTotal").value
+            ),
+
+        paid:
+            Number(
+                document.getElementById("feePaid").value
+            )
+
+    };
+
+
+    saveData();
+
+    closeModal();
+
+    openFeesClass(s.className);
+
+}
+
+
+/* =========================================================
+   TEACHERS
+========================================================= */
+
+function renderTeachers() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Teachers
+        </h1>
+
+
+        <button
+            class="success-btn"
+            onclick="showAddTeacher()">
+
+            + Add Teacher
+
+        </button>
+
+
+        <div
+            class="admin-card"
+            style="margin-top:20px;">
+
+            ${
+                teachers.map(t => `
+
+                    <div class="admin-student">
+
+                        <div class="admin-student-info">
+
+                            <h3>
+                                ${t.name}
+                            </h3>
+
+                            <p>
+                                ${t.subject}
+                            </p>
+
+                            <p>
+                                ${t.className}
+                            </p>
+
+                            <p>
+                                ${t.phone}
+                            </p>
+
+                            <p>
+                                ${t.email}
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="danger-btn"
+                            onclick="removeTeacher('${t.id}')">
+
+                            Remove
+
+                        </button>
+
+                    </div>
+
+                `).join("")
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+function showAddTeacher() {
+
+    openModal(`
+
+        <button
+            class="close-modal"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>
+            Add Teacher
+        </h2>
+
+
+        <div class="form-grid">
+
+            ${editField("Name", "teacherName", "")}
+
+            ${editField("Phone", "teacherPhone", "")}
+
+            ${editField(
+                "Email",
+                "teacherEmail",
+                "",
+                "email"
+            )}
+
+            <div class="form-field">
+
+                <label>
+                    Class
+                </label>
+
+                <select id="teacherClass">
+
+                    ${classes.map(c =>
+                        `<option>${c}</option>`
+                    ).join("")}
+
+                </select>
+
+            </div>
+
+            ${editField(
+                "Subject",
+                "teacherSubject",
+                ""
+            )}
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button
+                class="success-btn"
+                onclick="addTeacher()">
+
+                Add Teacher
+
+            </button>
+
+        </div>
+
+    `);
+
+}
+
+
+function addTeacher() {
+
+    teachers.push({
+
+        id:
+            "T" +
+            Date.now(),
+
+        name:
+            document.getElementById("teacherName").value,
+
+        phone:
+            document.getElementById("teacherPhone").value,
+
+        email:
+            document.getElementById("teacherEmail").value,
+
+        className:
+            document.getElementById("teacherClass").value,
+
+        subject:
+            document.getElementById("teacherSubject").value
+
+    });
+
+
+    saveData();
+
+    closeModal();
+
+    renderTeachers();
+
+}
+
+
+function removeTeacher(id) {
+
+    if (!confirm("Remove this teacher?")) {
+
+        return;
+
+    }
+
+
+    teachers =
+        teachers.filter(t => t.id !== id);
+
+    saveData();
+
+    renderTeachers();
+
+}
+
+
+/* =========================================================
+   ANNOUNCEMENTS
+========================================================= */
+
+function renderAdminAnnouncements() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    const wholeSchoolCount =
+        announcements.filter(
+            a =>
+                a.target === "Whole School"
+                ||
+                a.target === "All Classes"
+        ).length;
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:10px;">
+            Announcements
+        </h1>
+
+        <p style="color:#777;margin-bottom:25px;">
+            Choose who the announcement is for.
+        </p>
+
+        <div class="class-grid">
+
+            <div
+                class="class-card"
+                style="border:2px solid var(--blue);"
+                onclick="openAnnouncementTarget('Whole School')">
+
+                <h3>
+                    🏫 Whole School
+                </h3>
+
+                <p>
+                    ${wholeSchoolCount} announcement(s)
+                </p>
+
+            </div>
+
+            ${classes.map(c => `
+
+                <div
+                    class="class-card"
+                    onclick="openAnnouncementTarget('${c}')">
+
+                    <h3>
+                        ${c}
+                    </h3>
+
+                    <p>
+                        ${
+                            announcements.filter(
+                                a => a.target === c
+                            ).length
+                        }
+                        announcement(s)
+                    </p>
+
+                </div>
+
+            `).join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+function openAnnouncementTarget(target) {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    const list =
+        announcements
+        .filter(a =>
+
+            a.target === target
+            ||
+            (
+                target === "Whole School"
+                &&
+                a.target === "All Classes"
+            )
+
+        )
+        .slice()
+        .reverse();
+
+
+    main.innerHTML = `
+
+        <button
+            class="back-btn"
+            onclick="renderAdminAnnouncements()">
+
+            ← Announcements
+
+        </button>
+
+
+        <h1 style="color:#211d59;margin-bottom:10px;">
+            ${target === "Whole School" ? "🏫 Whole School" : target}
+        </h1>
+
+        <p style="color:#777;margin-bottom:25px;">
+            ${
+                target === "Whole School"
+                ?
+                "This announcement will be delivered to every student's portal."
+                :
+                "This announcement will be delivered to students in " + target + " only."
+            }
+        </p>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Create Announcement
+            </h2>
+
+
+            <div class="form-grid">
+
+                <div class="form-field full-width">
+
+                    <label>
+                        Announcement Title
+                    </label>
+
+                    <input
+                        id="announcementTitle"
+                        placeholder="Example: Examination Notice">
+
+                </div>
+
+
+                <div class="form-field full-width">
+
+                    <label>
+                        Message
+                    </label>
+
+                    <textarea
+                        id="announcementMessage"
+                        placeholder="Write your announcement..."></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    class="success-btn"
+                    onclick="createAnnouncement('${target}')">
+
+                    Send Announcement
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Sent Announcements
+            </h2>
+
+            ${
+                list.length === 0
+
+                ?
+
+                `
+                <div class="empty">
+                    No announcements sent here yet.
+                </div>
+                `
+
+                :
+
+                list.map(a => `
+
+                    <div class="announcement">
+
+                        <h3>
+                            ${a.title}
+                        </h3>
+
+                        <div class="date">
+                            ${a.date}
+                        </div>
+
+                        <p style="white-space:pre-wrap;">${a.message}</p>
+
+                        <br>
+
+                        <button
+                            class="danger-btn"
+                            onclick="deleteAnnouncement('${a.id}', '${target}')">
+
+                            Delete
+
+                        </button>
+
+                    </div>
+
+                `).join("")
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+function createAnnouncement(target) {
+
+    const title =
+        document
+        .getElementById("announcementTitle")
+        .value
+        .trim();
+
+
+    const message =
+        document
+        .getElementById("announcementMessage")
+        .value
+        .trim();
+
+
+    if (!title || !message) {
+
+        alert(
+            "Please enter a title and message."
+        );
+
+        return;
+
+    }
+
+
+    announcements.push({
+
+        id: "A" + Date.now(),
+
+        title: title,
+
+        target: target,
+
+        message: message,
+
+        date:
+            new Date().toLocaleString()
+
+    });
+
+
+    saveData();
+
+    alert(
+        "Announcement sent successfully."
+    );
+
+    openAnnouncementTarget(target);
+
+}
+
+
+function deleteAnnouncement(id, target) {
+
+    if (!confirm("Delete this announcement?")) {
+
+        return;
+
+    }
+
+
+    announcements =
+        announcements.filter(a => a.id !== id);
+
+
+    saveData();
+
+    openAnnouncementTarget(target);
+
+}
+
+
+/* =========================================================
+   ADMIN TIMETABLES (LECTURE + EXAM)
+========================================================= */
+
+function renderAdminTimetables(type) {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    const title =
+        type === "exam"
+        ? "Examination Timetables"
+        : "Student Timetables";
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:10px;">
+            ${title}
+        </h1>
+
+        <p style="color:#777;margin-bottom:25px;">
+            Upload a PDF or an image for each class.
+            Students in that class will see it in their portal.
+        </p>
+
+
+        <div class="admin-card">
+
+            ${classes.map((c, i) => {
+
+                const t =
+                    (timetables[type] || {})[c];
+
+                return `
+
+                    <div class="admin-student">
+
+                        <div class="admin-student-info">
+
+                            <h3>
+                                ${c}
+                            </h3>
+
+                            <p>
+                                ${t ? "📄 " + t.name : "No timetable uploaded"}
+                            </p>
+
+                            ${
+                                t
+                                ?
+                                `<p>Uploaded: ${t.date}</p>`
+                                :
+                                ""
+                            }
+
+                        </div>
+
+
+                        <div class="admin-student-actions">
+
+                            <input
+                                type="file"
+                                id="ttFile_${i}"
+                                accept="application/pdf,image/*"
+                                class="hidden"
+                                onchange="uploadTimetable('${type}', '${c}', this)">
+
+                            <button
+                                class="success-btn"
+                                onclick="document.getElementById('ttFile_${i}').click()">
+
+                                ${t ? "Replace" : "Upload"}
+
+                            </button>
+
+                            ${
+                                t
+                                ?
+                                `
+                                <button
+                                    class="primary-btn"
+                                    onclick="adminViewTimetable('${type}', '${c}')">
+
+                                    View
+
+                                </button>
+
+                                <button
+                                    class="danger-btn"
+                                    onclick="deleteTimetable('${type}', '${c}')">
+
+                                    Delete
+
+                                </button>
+                                `
+                                :
+                                ""
+                            }
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }).join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+function uploadTimetable(type, className, input) {
+
+    const file = input.files[0];
+
+    if (!file) return;
+
+
+    const allowed =
+        file.type === "application/pdf"
+        ||
+        file.type.startsWith("image/");
+
+
+    if (!allowed) {
+
+        alert("Only PDF or image files are allowed.");
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    const reader = new FileReader();
+
+
+    reader.onload = function(event) {
+
+        if (!timetables[type]) timetables[type] = {};
+
+        const previous =
+            timetables[type][className];
+
+
+        timetables[type][className] = {
+
+            name: file.name,
+
+            data: event.target.result,
+
+            date: new Date().toLocaleString()
+
+        };
+
+
+        if (!saveData()) {
+
+            if (previous) {
+
+                timetables[type][className] = previous;
+
+            } else {
+
+                delete timetables[type][className];
+
+            }
+
+            return;
+
+        }
+
+
+        alert("Uploaded successfully for " + className + ".");
+
+        renderAdminTimetables(type);
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function adminViewTimetable(type, className) {
+
+    const t =
+        (timetables[type] || {})[className];
+
+    if (t) openFileTab(t);
+
+}
+
+
+function deleteTimetable(type, className) {
+
+    if (!confirm("Delete this timetable?")) {
+
+        return;
+
+    }
+
+
+    delete timetables[type][className];
+
+    saveData();
+
+    renderAdminTimetables(type);
+
+}
+
+
+/* =========================================================
+   ADMISSIONS
+========================================================= */
+
+function renderAdmissions() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Admissions
+        </h1>
+
+
+        <div class="admin-card">
+
+            <h2>
+                New Admission
+            </h2>
+
+            <p style="color:#777;margin-bottom:20px;">
+                Use the Classes section to create the full
+                student account after admission.
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="renderClasses()">
+
+                Go To Classes & Add Student
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+function renderReports() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    const totalFees =
+        students.reduce(
+            (sum, s) =>
+                sum + Number(s.fees?.total || 0),
+            0
+        );
+
+
+    const totalPaid =
+        students.reduce(
+            (sum, s) =>
+                sum + Number(s.fees?.paid || 0),
+            0
+        );
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Reports
+        </h1>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Student Population
+            </h2>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Class</th>
+                            <th>Students</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${classes.map(c => `
+
+                            <tr>
+
+                                <td>
+                                    ${c}
+                                </td>
+
+                                <td>
+                                    ${
+                                        students.filter(
+                                            s =>
+                                            s.className === c
+                                        ).length
+                                    }
+                                </td>
+
+                            </tr>
+
+                        `).join("")}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Fees Summary
+            </h2>
+
+            <p>
+                Total Fees:
+                <strong>
+                    GHS ${totalFees.toFixed(2)}
+                </strong>
+            </p>
+
+            <p style="margin-top:10px;">
+                Collected:
+                <strong>
+                    GHS ${totalPaid.toFixed(2)}
+                </strong>
+            </p>
+
+            <p style="margin-top:10px;">
+                Outstanding:
+                <strong>
+                    GHS ${(totalFees - totalPaid).toFixed(2)}
+                </strong>
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function renderSettings() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Settings
+        </h1>
+
+
+        <div class="admin-card">
+
+            <h2>
+                School Information
+            </h2>
+
+
+            <div class="form-grid">
+
+                ${editField(
+                    "School Name",
+                    "schoolNameSetting",
+                    "Mays Day Care & Educational Center"
+                )}
+
+                ${editField(
+                    "Academic Year",
+                    "academicYearSetting",
+                    "2026/2027"
+                )}
+
+                ${editField(
+                    "Current Semester",
+                    "semesterSetting",
+                    "First Semester"
+                )}
+
+                ${editField(
+                    "Campus",
+                    "campusSetting",
+                    "Accra"
+                )}
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    class="success-btn"
+                    onclick="saveSettings()">
+
+                    Save Settings
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function saveSettings() {
+
+    localStorage.setItem(
+        "MEC_schoolName",
+        document
+        .getElementById("schoolNameSetting")
+        .value
+    );
+
+
+    localStorage.setItem(
+        "MEC_academicYear",
+        document
+        .getElementById("academicYearSetting")
+        .value
+    );
+
+
+    alert("Settings saved.");
+
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+function renderSecurity() {
+
+    const main =
+        document.getElementById("adminMain");
+
+
+    main.innerHTML = `
+
+        <h1 style="color:#211d59;margin-bottom:25px;">
+            Admin Security
+        </h1>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Administrator Password
+            </h2>
+
+            <p style="color:#777;margin-bottom:20px;">
+                Change the password of the admin account you are logged in with.
+            </p>
+
+
+            
+
+
+            <div
+                class="form-field"
+                style="margin-top:15px;">
+
+                <label>
+                    New Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminNewPassword">
+
+            </div>
+
+
+            <button
+                class="success-btn"
+                style="margin-top:20px;"
+                onclick="changeAdminPassword()">
+
+                Change Password
+
+            </button>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <h2>
+                Student Passwords
+            </h2>
+
+            <p style="color:#777;">
+                You can see a student's current password, including one the
+                student changed, and reset it from Classes → View.
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+async function changeAdminPassword() {
+
+    const newPassword =
+        document
+        .getElementById("adminNewPassword")
+        .value;
+
+
+    if (!newPassword || newPassword.length < 6) {
+
+        alert(
+            "New password must be at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    const { error } =
+        await supabaseClient.auth.updateUser({
+            password: newPassword
+        });
+
+
+    if (error) {
+
+        alert("Could not change the password: " + error.message);
+
+        return;
+
+    }
+
+
+    document.getElementById("adminNewPassword").value = "";
+
+    alert("Administrator password changed.");
+
+}
+
+
+/* =========================================================
+   RESET STUDENT PASSWORD
+========================================================= */
+
+function resetStudentPassword(id) {
+
+    const s =
+        students.find(
+            student => student.id === id
+        );
+
+
+    if (!s) return;
+
+
+    const newPassword =
+        prompt(
+            "Enter a new password for " +
+            s.name
+        );
+
+
+    if (!newPassword) return;
+
+
+    if (newPassword.length < 6) {
+
+        alert(
+            "Password must be at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    s.password = newPassword;
+
+    saveData();
+
+    alert(
+        "Student password reset successfully."
+    );
+
+    viewStudent(s.id);
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(content) {
+
+    document
+        .getElementById("modalBox")
+        .innerHTML = content;
+
+
+    document
+        .getElementById("modal")
+        .classList.remove("hidden");
+
+}
+
+
+function closeModal() {
+
+    document
+        .getElementById("modal")
+        .classList.add("hidden");
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+loadData();
+
+</script>
+
+</body>
+</html>
